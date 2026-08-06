@@ -32,9 +32,12 @@ Los cambios importantes del proyecto se registran en este archivo.
 - Repaso adaptativo de elementos pertenecientes a niveles anteriores.
 - Las preguntas falladas vuelven al final de la sesión hasta ser respondidas correctamente.
 - La barra de progreso se muestra al pie de la pregunta y refleja los repasos añadidos.
-- La barra usa ocho pasos fijos de 12,5%: suma uno por acierto, resta uno por error y exige recuperar el 100% mediante repasos.
+- Cada uno de los seis módulos dispone de seis temas teóricos y preguntas propias, desde estructura atómica hasta equilibrio químico.
+- Los botones de estudio cambian con el nivel y conservan el contenido previo dentro de «Temas anteriores».
+- La barra usa ocho pasos fijos de 12,5% y solo avanza cuando una de las ocho preguntas originales queda resuelta correctamente.
 - Los repasos adicionales evitan repetir inmediatamente la misma pregunta recién superada.
-- Una pregunta fallada se repite solamente después de intercalar al menos dos preguntas diferentes.
+- Una pregunta fallada pasa al final de la cola; si no quedan otras, se repite inmediatamente.
+- Las preguntas acertadas se retiran definitivamente durante el resto de la tanda.
 
 ### Pendiente
 

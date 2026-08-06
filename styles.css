@@ -67,6 +67,9 @@ h1, h2, h3, p { margin-top: 0; }
 .concept-guide { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 8px; }
 .guide-button { padding: 6px 9px; border: 1px solid #6ee7ff2c; background: #6ee7ff0c; color: var(--accent-2); font-size: .75rem; font-weight: 650; }
 .guide-button.active { border-color: var(--accent-2); background: #6ee7ff25; }
+.previous-topics { width: 100%; margin-top: 3px; padding: 7px 9px; border: 1px solid #ffffff16; border-radius: 10px; background: #ffffff08; }
+.previous-topics summary { cursor: pointer; color: var(--muted); font-size: .78rem; font-weight: 700; }
+.previous-topic-buttons { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 .element-dialog .element-details { color: var(--accent-2); font-size: .78rem; }
 .element-dialog { width: min(460px, calc(100vw - 28px)); padding: 22px; border: 1px solid #6ee7ff66; border-radius: 18px; background: #0b182a; color: var(--text); box-shadow: 0 24px 70px #000b; }
 .element-dialog::backdrop { background: #020711b8; backdrop-filter: blur(3px); }
@@ -138,6 +141,7 @@ h1, h2, h3, p { margin-top: 0; }
   .level-card small { margin-top: 6px; text-align: left; }
   .concept-guide { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .guide-button { min-width: 0; padding-inline: 5px; }
+  .previous-topics { grid-column: 1 / -1; }
 }
 @media (max-width: 390px) {
   .periodic-board { grid-template-columns: repeat(4, minmax(0, 1fr)); }

@@ -119,6 +119,54 @@ const CONCEPT_GUIDES = [
   { id: "families", title: "Familias", text: "Son conjuntos de elementos con propiedades parecidas. Algunos ejemplos son los metales alcalinos, los halógenos y los gases nobles; los colores de esta tabla permiten reconocerlas." }
 ];
 
+const ADVANCED_TOPICS = [
+  { level: 2, id: "atomic-particles", title: "Partículas del átomo", text: "El núcleo contiene protones con carga positiva y neutrones sin carga. Los electrones, con carga negativa, ocupan la región que rodea al núcleo.", prompt: "¿Qué partículas se encuentran en el núcleo del átomo?", options: ["Protones y neutrones", "Electrones y protones", "Solo electrones", "Moléculas e iones"], answer: "Protones y neutrones" },
+  { level: 2, id: "ions", title: "Átomos e iones", text: "Un átomo neutro tiene igual cantidad de protones y electrones. Cuando gana o pierde electrones se convierte en un ion con carga eléctrica.", prompt: "¿Cómo se forma un ion?", options: ["Al ganar o perder electrones", "Al cambiar sus protones", "Al cambiar de período", "Al enfriarse"], answer: "Al ganar o perder electrones" },
+  { level: 2, id: "valence", title: "Valencia", text: "La valencia describe la capacidad de combinación de un elemento y se relaciona con los electrones que puede ganar, perder o compartir al formar enlaces.", prompt: "¿Con qué se relaciona la valencia?", options: ["Con la capacidad de formar enlaces", "Con la temperatura de ebullición", "Con el número de neutrones", "Con el nombre del elemento"], answer: "Con la capacidad de formar enlaces" },
+  { level: 2, id: "oxidation-number", title: "Número de oxidación", text: "El número de oxidación representa la carga aparente que tendría un átomo al asignar los electrones de sus enlaces. Puede ser positivo, negativo o cero.", prompt: "¿Qué representa el número de oxidación?", options: ["Una carga aparente del átomo", "La cantidad de moléculas", "El grupo de la tabla", "La masa del núcleo"], answer: "Una carga aparente del átomo" },
+  { level: 2, id: "transition-metals", title: "Metales de transición", text: "Ocupan la zona central de la tabla, principalmente los grupos 3 al 12. Muchos conducen bien la electricidad y pueden presentar varios estados de oxidación.", prompt: "¿Dónde se ubican principalmente los metales de transición?", options: ["En el centro de la tabla", "Solo en la primera columna", "Fuera de la tabla", "En la última fila únicamente"], answer: "En el centro de la tabla" },
+  { level: 2, id: "electron-configuration", title: "Configuración electrónica", text: "La configuración electrónica indica cómo se distribuyen los electrones en niveles y subniveles de energía alrededor del núcleo.", prompt: "¿Qué describe la configuración electrónica?", options: ["La distribución de los electrones", "La distribución de los protones", "El tamaño de una molécula", "La velocidad de una reacción"], answer: "La distribución de los electrones" },
+
+  { level: 3, id: "ionic-bond", title: "Enlace iónico", text: "Se forma por atracción entre iones de cargas opuestas, normalmente después de que un metal transfiere electrones a un no metal.", prompt: "¿Qué mantiene unido un enlace iónico?", options: ["La atracción entre cargas opuestas", "El intercambio de protones", "La ausencia de electrones", "La gravedad"], answer: "La atracción entre cargas opuestas" },
+  { level: 3, id: "covalent-bond", title: "Enlace covalente", text: "Se forma cuando dos átomos, generalmente no metálicos, comparten uno o más pares de electrones.", prompt: "¿Qué hacen los átomos en un enlace covalente?", options: ["Comparten electrones", "Comparten protones", "Pierden el núcleo", "Cambian su número atómico"], answer: "Comparten electrones" },
+  { level: 3, id: "molecules-compounds", title: "Moléculas y compuestos", text: "Una molécula es un conjunto de átomos enlazados. Un compuesto contiene átomos de al menos dos elementos diferentes en proporciones definidas.", prompt: "¿Qué debe contener un compuesto?", options: ["Al menos dos elementos diferentes", "Un solo protón", "Solamente metales", "Siempre agua"], answer: "Al menos dos elementos diferentes" },
+  { level: 3, id: "chemical-formulas", title: "Fórmulas químicas", text: "Una fórmula muestra qué elementos forman una sustancia y cuántos átomos de cada uno contiene. En H₂O hay dos H por cada O.", prompt: "¿Qué indica el subíndice 2 en H₂O?", options: ["Dos átomos de hidrógeno", "Dos átomos de oxígeno", "Dos moléculas de agua", "Carga positiva dos"], answer: "Dos átomos de hidrógeno" },
+  { level: 3, id: "cations-anions", title: "Cationes y aniones", text: "Un catión tiene carga positiva porque perdió electrones. Un anión tiene carga negativa porque ganó electrones.", prompt: "¿Qué tipo de ion tiene carga negativa?", options: ["Anión", "Catión", "Protón", "Neutrón"], answer: "Anión" },
+  { level: 3, id: "electronegativity", title: "Electronegatividad", text: "Es la tendencia de un átomo a atraer hacia sí los electrones compartidos en un enlace químico.", prompt: "¿Qué mide la electronegatividad?", options: ["La atracción de electrones en un enlace", "La cantidad de neutrones", "La masa de una muestra", "La rapidez de fusión"], answer: "La atracción de electrones en un enlace" },
+
+  { level: 4, id: "chemical-reactions", title: "Reacciones químicas", text: "En una reacción, unas sustancias se transforman en otras porque sus átomos se reorganizan y forman enlaces diferentes.", prompt: "¿Qué sucede con los átomos durante una reacción química?", options: ["Se reorganizan", "Desaparecen", "Se convierten en energía por completo", "Cambian su número de protones"], answer: "Se reorganizan" },
+  { level: 4, id: "reactants-products", title: "Reactivos y productos", text: "Los reactivos son las sustancias iniciales y se escriben a la izquierda de la flecha. Los productos son las sustancias formadas y aparecen a la derecha.", prompt: "¿Dónde se escriben normalmente los productos?", options: ["A la derecha de la flecha", "A la izquierda de la flecha", "Sobre los subíndices", "Fuera de la ecuación"], answer: "A la derecha de la flecha" },
+  { level: 4, id: "mass-conservation", title: "Conservación de la masa", text: "En una reacción química ordinaria los átomos no se crean ni se destruyen. Por eso debe haber la misma cantidad de cada tipo de átomo antes y después.", prompt: "¿Por qué se balancean las ecuaciones químicas?", options: ["Para conservar la cantidad de cada átomo", "Para cambiar los elementos", "Para eliminar productos", "Para aumentar la temperatura"], answer: "Para conservar la cantidad de cada átomo" },
+  { level: 4, id: "equation-balancing", title: "Balanceo de ecuaciones", text: "Balancear consiste en ajustar los coeficientes delante de las fórmulas hasta tener igual número de átomos de cada elemento en ambos lados. Nunca se cambian los subíndices.", prompt: "¿Qué se modifica para balancear una ecuación?", options: ["Los coeficientes", "Los subíndices", "Los símbolos químicos", "Los números atómicos"], answer: "Los coeficientes" },
+  { level: 4, id: "reaction-types", title: "Tipos de reacción", text: "Entre los tipos básicos están síntesis, descomposición, desplazamiento y combustión. Se distinguen por la manera en que se reorganizan reactivos y productos.", prompt: "¿Cuál es un tipo básico de reacción química?", options: ["Síntesis", "Valencia", "Electronegatividad", "Isótopo"], answer: "Síntesis" },
+  { level: 4, id: "coefficients-subscripts", title: "Coeficientes y subíndices", text: "El coeficiente multiplica toda la fórmula y señala cuántas unidades participan. El subíndice pertenece a la fórmula e indica cuántos átomos hay dentro de cada unidad.", prompt: "En 2H₂O, ¿qué indica el coeficiente 2?", options: ["Dos moléculas de agua", "Dos átomos de oxígeno", "Carga eléctrica dos", "Dos elementos diferentes"], answer: "Dos moléculas de agua" },
+
+  { level: 5, id: "atomic-mass", title: "Masa atómica", text: "La masa atómica de la tabla es un promedio ponderado de las masas de los isótopos naturales de un elemento y se expresa en unidades de masa atómica.", prompt: "¿Qué representa la masa atómica tabulada?", options: ["Un promedio de sus isótopos", "Solo la cantidad de protones", "La masa de una molécula", "La carga del átomo"], answer: "Un promedio de sus isótopos" },
+  { level: 5, id: "molecular-mass", title: "Masa molecular", text: "Se obtiene sumando las masas atómicas de todos los átomos indicados en la fórmula de una molécula.", prompt: "¿Cómo se calcula la masa molecular?", options: ["Sumando las masas de sus átomos", "Restando los protones", "Contando solo elementos distintos", "Midiendo el volumen"], answer: "Sumando las masas de sus átomos" },
+  { level: 5, id: "mole", title: "Mol", text: "El mol es la unidad para cantidad de sustancia. Un mol contiene aproximadamente 6,022 × 10²³ entidades, llamado número de Avogadro.", prompt: "¿Aproximadamente cuántas entidades contiene un mol?", options: ["6,022 × 10²³", "118", "1.000", "3 × 10⁸"], answer: "6,022 × 10²³" },
+  { level: 5, id: "molar-mass", title: "Masa molar", text: "Es la masa de un mol de una sustancia y se expresa habitualmente en gramos por mol (g/mol).",
+    prompt: "¿En qué unidad suele expresarse la masa molar?", options: ["g/mol", "mol/L", "°C", "m/s"], answer: "g/mol" },
+  { level: 5, id: "stoichiometry", title: "Estequiometría", text: "Utiliza las proporciones de una ecuación balanceada para relacionar cantidades de reactivos consumidos y productos formados.", prompt: "¿Qué necesita la estequiometría para calcular proporciones correctas?", options: ["Una ecuación balanceada", "Solo la tabla vacía", "Cambiar los subíndices", "Ignorar los productos"], answer: "Una ecuación balanceada" },
+  { level: 5, id: "isotopes-radioactivity", title: "Isótopos y radiactividad", text: "Los isótopos tienen igual número de protones y diferente número de neutrones. Algunos núcleos inestables emiten radiación al transformarse.", prompt: "¿En qué se diferencian los isótopos de un elemento?", options: ["En su cantidad de neutrones", "En su cantidad de protones", "En su símbolo", "En su grupo"], answer: "En su cantidad de neutrones" },
+
+  { level: 6, id: "chemical-equilibrium", title: "Equilibrio químico", text: "En una reacción reversible, el equilibrio ocurre cuando las velocidades de la reacción directa e inversa son iguales. Las concentraciones permanecen constantes, pero las reacciones continúan.", prompt: "¿Qué se iguala en el equilibrio químico?", options: ["Las velocidades directa e inversa", "Las masas de todas las sustancias", "Los números atómicos", "El pH y la temperatura"], answer: "Las velocidades directa e inversa" },
+  { level: 6, id: "acids-bases", title: "Ácidos y bases", text: "En una descripción básica, los ácidos pueden donar protones H⁺ y las bases pueden aceptarlos. Al reaccionar pueden producir una neutralización.", prompt: "Según Brønsted-Lowry, ¿qué puede donar un ácido?", options: ["Un protón H⁺", "Un neutrón", "Un núcleo", "Un mol"], answer: "Un protón H⁺" },
+  { level: 6, id: "ph-scale", title: "Escala de pH", text: "El pH expresa la acidez de una disolución. A 25 °C, un pH menor que 7 es ácido, 7 es neutro y mayor que 7 es básico.", prompt: "A 25 °C, ¿qué indica un pH menor que 7?", options: ["Una disolución ácida", "Una disolución básica", "Una sustancia sin átomos", "Equilibrio obligatorio"], answer: "Una disolución ácida" },
+  { level: 6, id: "redox", title: "Oxidación y reducción", text: "La oxidación implica pérdida de electrones y la reducción implica ganancia. Ambos procesos ocurren juntos en una reacción redox.", prompt: "¿Qué ocurre durante la oxidación?", options: ["Se pierden electrones", "Se ganan electrones", "Se crean protones", "Se eliminan átomos"], answer: "Se pierden electrones" },
+  { level: 6, id: "synthetic-elements", title: "Elementos sintéticos", text: "Son elementos producidos artificialmente mediante reacciones nucleares. Muchos son inestables, radiactivos y existen durante tiempos muy breves.", prompt: "¿Cómo se producen los elementos sintéticos?", options: ["Mediante reacciones nucleares", "Mezclando agua y sal", "Enfriando gases nobles", "Balanceando ecuaciones"], answer: "Mediante reacciones nucleares" },
+  { level: 6, id: "chemistry-review", title: "Mapa de la química", text: "La estructura atómica explica propiedades y enlaces; los enlaces forman sustancias; las sustancias reaccionan conservando átomos y sus cantidades se relacionan mediante el mol.", prompt: "¿Qué principio conecta una ecuación balanceada con el cálculo de cantidades?", options: ["La conservación de los átomos", "La desaparición de la materia", "El cambio de símbolos", "La creación de elementos"], answer: "La conservación de los átomos" }
+];
+
+CONCEPT_QUESTIONS.forEach((question) => { question.level = 1; });
+CONCEPT_GUIDES.forEach((guide) => { guide.level = 1; });
+ADVANCED_TOPICS.forEach((topic) => {
+  CONCEPT_QUESTIONS.push({
+    id: topic.id, level: topic.level, prompt: topic.prompt,
+    options: topic.options, answer: topic.answer, explanation: topic.text
+  });
+  CONCEPT_GUIDES.push({ id: topic.id, level: topic.level, title: topic.title, text: topic.text });
+});
+
 const $ = (id) => document.getElementById(id);
 const profileForm = $("profileForm");
 const profileNameInput = $("profileName");
@@ -144,6 +192,7 @@ let mistakes = [];
 let gameActive = false;
 let helpedAnswers = 0;
 let progressSteps = 0;
+let sessionCorrectKeys = new Set();
 
 renderProfiles();
 renderPeriodicTable();
@@ -279,6 +328,7 @@ function activateProfile(profile) {
   feedback.textContent = `${profile.name}, la química te espera.`;
   renderProfiles();
   renderPeriodicTable();
+  renderConceptGuide();
   updateLevelDisplay();
   updateProfilePanel(false);
 }
@@ -299,6 +349,7 @@ function deleteProfile(id) {
   saveProfiles();
   renderProfiles();
   renderPeriodicTable();
+  renderConceptGuide();
   updateLevelDisplay();
   updateProfilePanel(Boolean(activeProfile));
 }
@@ -312,7 +363,10 @@ function resetProfileProgress(id) {
   profile.unlockedLevel = 1;
   saveProfiles();
   renderProfiles();
-  if (profile.id === activeProfile?.id) renderPeriodicTable();
+  if (profile.id === activeProfile?.id) {
+    renderPeriodicTable();
+    renderConceptGuide();
+  }
   updateStats();
   feedback.textContent = `Se reinició el progreso de ${profile.name}.`;
 }
@@ -347,13 +401,29 @@ function renderLegend() {
 function renderConceptGuide() {
   const guide = $("conceptGuide");
   guide.replaceChildren();
-  CONCEPT_GUIDES.forEach((topic) => {
+  const level = activeProfile?.unlockedLevel || 1;
+  const addTopicButton = (container, topic) => {
     const button = document.createElement("button");
     button.className = "guide-button";
     button.textContent = topic.title;
     button.addEventListener("click", () => showGuideTopic(topic, button));
-    guide.append(button);
-  });
+    container.append(button);
+  };
+  CONCEPT_GUIDES.filter((topic) => topic.level === level)
+    .forEach((topic) => addTopicButton(guide, topic));
+
+  if (level > 1) {
+    const previous = document.createElement("details");
+    const summary = document.createElement("summary");
+    const previousButtons = document.createElement("div");
+    previous.className = "previous-topics";
+    summary.textContent = "Temas anteriores";
+    previousButtons.className = "previous-topic-buttons";
+    CONCEPT_GUIDES.filter((topic) => topic.level < level)
+      .forEach((topic) => addTopicButton(previousButtons, topic));
+    previous.append(summary, previousButtons);
+    guide.append(previous);
+  }
 }
 
 function showGuideTopic(topic, selectedButton) {
@@ -443,6 +513,7 @@ function resetGame() {
   gameActive = false;
   helpedAnswers = 0;
   progressSteps = 0;
+  sessionCorrectKeys = new Set();
   setBoardVisibility(true);
   $("toggleBoardBtn").hidden = true;
   optionsContainer.replaceChildren();
@@ -464,6 +535,7 @@ function startGame() {
   score = round = streak = bestStreak = correctCount = 0;
   helpedAnswers = 0;
   progressSteps = 0;
+  sessionCorrectKeys = new Set();
   mistakes = [];
   summaryCard.hidden = true;
   questions = buildAdaptiveQuestions();
@@ -477,8 +549,22 @@ function startGame() {
 }
 
 function buildAdaptiveQuestions() {
-  const conceptCount = activeProfile.gamesPlayed === 0 ? 6 : activeProfile.gamesPlayed < 3 ? 4 : 2;
-  const concepts = selectAdaptive(CONCEPT_QUESTIONS, conceptCount, (item) => `concept:${item.id}`)
+  const level = activeProfile.unlockedLevel;
+  const currentConcepts = CONCEPT_QUESTIONS.filter((item) => item.level === level);
+  const previousConcepts = CONCEPT_QUESTIONS.filter((item) => item.level < level);
+  const allCurrentTopicsAreNew = currentConcepts.every((item) =>
+    !(activeProfile.progress[`concept:${item.id}`]?.attempts)
+  );
+  const currentTopicsNeedPractice = currentConcepts.some((item) =>
+    (activeProfile.progress[`concept:${item.id}`]?.level || 0) < 2
+  );
+  const conceptCount = allCurrentTopicsAreNew ? 6 : currentTopicsNeedPractice ? 4 : 2;
+  const currentConceptCount = conceptCount > 2 || !previousConcepts.length ? conceptCount : 1;
+  const selectedConcepts = [
+    ...selectAdaptive(currentConcepts, currentConceptCount, (item) => `concept:${item.id}`),
+    ...selectAdaptive(previousConcepts, conceptCount - currentConceptCount, (item) => `concept:${item.id}`)
+  ];
+  const concepts = selectedConcepts
     .map((item) => ({ ...item, kind: "concept", key: `concept:${item.id}` }));
   const elementCount = ROUND_COUNT - conceptCount;
   const block = getCurrentBlock();
@@ -490,7 +576,7 @@ function buildAdaptiveQuestions() {
     ...selectAdaptive(previousElements, elementCount - currentCount, (item) => `element:${item.number}`)
   ];
   const elements = shuffle(selectedElements).map(createElementQuestion);
-  return activeProfile.gamesPlayed === 0 ? [...concepts, ...elements] : shuffle([...concepts, ...elements]);
+  return allCurrentTopicsAreNew ? [...concepts, ...elements] : shuffle([...concepts, ...elements]);
 }
 
 function createElementQuestion(element, index) {
@@ -499,18 +585,7 @@ function createElementQuestion(element, index) {
 }
 
 function showNextQuestion() {
-  if (round >= questions.length) {
-    if (progressSteps >= ROUND_COUNT) return finishGame();
-    const uniqueCandidates = [...new Map(
-      questions
-        .filter((question) => question.key !== currentQuestion?.key)
-        .map((question) => [question.key, question])
-    ).values()];
-    const source = uniqueCandidates.length
-      ? uniqueCandidates[Math.floor(Math.random() * uniqueCandidates.length)]
-      : questions[Math.floor(Math.random() * questions.length)];
-    questions.push({ ...source, isRetry: true, helpUsed: false });
-  }
+  if (round >= questions.length) return finishGame();
   $("questionCard").hidden = false;
   answerLocked = false;
   closeGuideCard();
@@ -569,7 +644,9 @@ function answerQuestion(choice, selectedButton) {
   if (currentQuestion.helpUsed) helpedAnswers += 1;
 
   if (correct) {
-    progressSteps = Math.min(ROUND_COUNT, progressSteps + 1);
+    sessionCorrectKeys.add(currentQuestion.key);
+    progressSteps = sessionCorrectKeys.size;
+    questions = questions.filter((question, index) => index <= round || question.key !== currentQuestion.key);
     let earnedPoints = 0;
     if (!currentQuestion.isRetry) {
       streak += 1;
@@ -585,7 +662,6 @@ function answerQuestion(choice, selectedButton) {
       ? `¡Repaso completado! · ${explanation}`
       : `¡Correcto! +${earnedPoints}${currentQuestion.helpUsed ? " con ayuda" : ""} · ${explanation}`;
   } else {
-    progressSteps = Math.max(0, progressSteps - 1);
     selectedButton.classList.add("wrong");
     selectedButton.textContent = `✕ ${selectedButton.textContent}`;
     streak = 0;
@@ -606,19 +682,6 @@ function answerQuestion(choice, selectedButton) {
 }
 
 function scheduleRetry(question) {
-  const minimumGap = 2;
-  const remainingQuestions = questions.length - (round + 1);
-  const fillersNeeded = Math.max(0, minimumGap - remainingQuestions);
-  if (fillersNeeded) {
-    const fillerCandidates = [...new Map(
-      questions
-        .filter((candidate) => candidate.key !== question.key)
-        .map((candidate) => [candidate.key, candidate])
-    ).values()];
-    shuffle(fillerCandidates).slice(0, fillersNeeded).forEach((candidate) => {
-      questions.push({ ...candidate, isRetry: true, helpUsed: false });
-    });
-  }
   questions.push({ ...question, isRetry: true, helpUsed: false });
 }
 
@@ -676,8 +739,9 @@ function updateMastery(key, correct, helpUsed = false) {
 
 function getMasteryPercent(profile) {
   const available = getAvailableElements(profile);
+  const availableConcepts = CONCEPT_QUESTIONS.filter((item) => item.level <= (profile.unlockedLevel || 1));
   const keys = [
-    ...CONCEPT_QUESTIONS.map((item) => `concept:${item.id}`),
+    ...availableConcepts.map((item) => `concept:${item.id}`),
     ...available.map((item) => `element:${item.number}`)
   ];
   const totalTopics = keys.length;
@@ -689,8 +753,13 @@ function getBlockMastery(profile = activeProfile) {
   if (!profile) return 0;
   const block = getCurrentBlock(profile);
   const blockElements = ELEMENTS.filter((item) => item.number >= block.min && item.number <= block.max);
-  const earned = blockElements.reduce((sum, item) => sum + Math.min(5, profile.progress?.[`element:${item.number}`]?.level || 0), 0);
-  return Math.round(earned / (blockElements.length * 5) * 100);
+  const blockConcepts = CONCEPT_QUESTIONS.filter((item) => item.level === profile.unlockedLevel);
+  const keys = [
+    ...blockElements.map((item) => `element:${item.number}`),
+    ...blockConcepts.map((item) => `concept:${item.id}`)
+  ];
+  const earned = keys.reduce((sum, key) => sum + Math.min(5, profile.progress?.[key]?.level || 0), 0);
+  return Math.round(earned / (keys.length * 5) * 100);
 }
 
 function checkLevelUnlock() {
@@ -698,6 +767,7 @@ function checkLevelUnlock() {
   if (getBlockMastery(activeProfile) < UNLOCK_THRESHOLD) return false;
   activeProfile.unlockedLevel += 1;
   renderPeriodicTable();
+  renderConceptGuide();
   renderProfiles();
   return true;
 }

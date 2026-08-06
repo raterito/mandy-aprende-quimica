@@ -17,6 +17,8 @@ La aplicación está implementada únicamente con HTML, CSS y JavaScript. Incluy
 - La segunda y tercera partida usan cuatro preguntas conceptuales; después se mantienen dos como repaso.
 - El dominio se almacena por `concept:<id>` y `element:<número>`.
 - Los niveles cubren 1–20, 21–40, 41–60, 61–80, 81–100 y 101–118; se desbloquean con 80% de dominio en el bloque actual.
+- Cada nivel posee seis temas teóricos propios. Los botones muestran el nivel vigente y agrupan lo anterior bajo «Temas anteriores».
+- El dominio requerido para desbloquear incluye tanto los elementos como los seis conceptos del módulo.
 - Las preguntas de elementos priorizan el bloque vigente y reservan una fracción para repasar niveles anteriores.
 - Un acierto suma un nivel; un error resta dos. El rango es 0–5.
 - La selección ponderada da peso 6 a contenido nuevo y peso 1 a contenido dominado. Lo dominado no desaparece por completo.
@@ -24,11 +26,15 @@ La aplicación está implementada únicamente con HTML, CSS y JavaScript. Incluy
 
 ## Reglas para cambios futuros
 
+- Trabajar y probar solamente en local. No crear commits, hacer `push` ni desplegar GitHub Pages hasta que el usuario diga explícitamente «publica».
 - Mantener el proyecto ejecutable abriendo `index.html` directamente, salvo decisión explícita de migrar a otra arquitectura.
 - Conservar compatibilidad con perfiles existentes y migrar datos cuando cambie su esquema.
 - No introducir scroll horizontal en la página ni en la tabla en pantallas pequeñas.
 - Tratar nombres de usuario con `textContent`; no interpolarlos mediante `innerHTML`.
 - Bloquear respuestas múltiples y cancelar temporizadores al reiniciar.
+- Dentro de una misma tanda, una pregunta respondida correctamente no debe volver a aparecer.
+- La tanda contiene ocho preguntas originales: un error envía esa misma pregunta al final sin crear preguntas nuevas; si no queda ninguna otra, el repaso puede aparecer inmediatamente.
+- La barra suma 12,5% cuando una pregunta original queda resuelta correctamente y no avanza con un error.
 - Validar `script.js` con `node --check script.js` después de modificarlo.
 - Mantener textos y archivos en UTF-8.
 - Actualizar `CHANGELOG.md` cuando se agregue una función o cambie el comportamiento.
