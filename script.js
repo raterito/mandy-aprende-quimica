@@ -510,7 +510,7 @@ function showNextQuestion() {
     optionsContainer.replaceChildren();
     shuffle(currentQuestion.options).forEach((option) => addOptionButton(option));
     feedback.textContent = "Elige una respuesta.";
-    updateStats();
+    updateStats(true);
     return;
   }
   const { element, type } = currentQuestion;
@@ -526,7 +526,7 @@ function showNextQuestion() {
   optionsContainer.replaceChildren();
   choices.forEach((choice) => addOptionButton(type === "name-to-symbol" ? choice.symbol : choice.name, choice));
   feedback.textContent = "Elige una respuesta.";
-  updateStats();
+  updateStats(true);
 }
 
 function addOptionButton(label, value = label) {
@@ -620,15 +620,16 @@ function finishGame() {
   updateStats();
 }
 
-function updateStats() {
+function updateStats(questionShown = false) {
   $("scoreLabel").textContent = `⭐ ${score}`;
   $("streakLabel").textContent = `🔥 ${streak}`;
   const mastery = activeProfile ? getMasteryPercent(activeProfile) : 0;
   $("masteryLabel").textContent = `🧠 ${mastery}%`;
   $("masteryLabel").setAttribute("aria-label", `Dominio general: ${mastery} por ciento`);
   const sessionTotal = questions.length || ROUND_COUNT;
-  $("roundLabel").textContent = `${Math.min(round, sessionTotal)}/${sessionTotal}`;
-  $("progressBar").style.width = `${round / sessionTotal * 100}%`;
+  const visibleProgress = questionShown && gameActive ? Math.min(round + 1, sessionTotal) : Math.min(round, sessionTotal);
+  $("roundLabel").textContent = `${visibleProgress}/${sessionTotal}`;
+  $("progressBar").style.width = `${visibleProgress / sessionTotal * 100}%`;
   updateLevelDisplay();
 }
 

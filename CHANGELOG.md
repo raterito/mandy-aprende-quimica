@@ -32,6 +32,7 @@ Los cambios importantes del proyecto se registran en este archivo.
 - Repaso adaptativo de elementos pertenecientes a niveles anteriores.
 - Las preguntas falladas vuelven al final de la sesión hasta ser respondidas correctamente.
 - La barra de progreso se muestra al pie de la pregunta y refleja los repasos añadidos.
+- La barra avanza al presentar cada pregunta y retrocede inmediatamente cuando se añade un repaso por error.
 
 ### Pendiente
 
