@@ -193,6 +193,41 @@ let gameActive = false;
 let helpedAnswers = 0;
 let progressSteps = 0;
 let sessionCorrectKeys = new Set();
+let audioContext = null;
+
+function playAnswerSound(correct) {
+  const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+  if (!AudioContextClass) return;
+
+  try {
+    audioContext ||= new AudioContextClass();
+    if (audioContext.state === "suspended") audioContext.resume();
+
+    const startTime = audioContext.currentTime;
+    const notes = correct
+      ? [{ frequency: 523.25, delay: 0 }, { frequency: 659.25, delay: 0.08 }, { frequency: 783.99, delay: 0.16 }]
+      : [{ frequency: 246.94, delay: 0 }, { frequency: 196, delay: 0.13 }];
+
+    notes.forEach(({ frequency, delay }) => {
+      const oscillator = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+      const noteStart = startTime + delay;
+      const noteEnd = noteStart + (correct ? 0.16 : 0.22);
+
+      oscillator.type = correct ? "sine" : "triangle";
+      oscillator.frequency.setValueAtTime(frequency, noteStart);
+      gain.gain.setValueAtTime(0.0001, noteStart);
+      gain.gain.exponentialRampToValueAtTime(0.13, noteStart + 0.015);
+      gain.gain.exponentialRampToValueAtTime(0.0001, noteEnd);
+      oscillator.connect(gain);
+      gain.connect(audioContext.destination);
+      oscillator.start(noteStart);
+      oscillator.stop(noteEnd);
+    });
+  } catch (error) {
+    console.debug("El navegador no pudo reproducir el efecto de sonido", error);
+  }
+}
 
 renderProfiles();
 renderPeriodicTable();
@@ -642,6 +677,7 @@ function answerQuestion(choice, selectedButton) {
     }
   });
   if (currentQuestion.helpUsed) helpedAnswers += 1;
+  playAnswerSound(correct);
 
   if (correct) {
     sessionCorrectKeys.add(currentQuestion.key);
@@ -793,6 +829,15 @@ function selectAdaptive(items, count, getKey) {
   const available = [...items];
   const selected = [];
   while (selected.length < count && available.length) {
+    const unseen = available.filter((item) =>
+      !(activeProfile.progress[getKey(item)]?.attempts)
+    );
+    if (unseen.length) {
+      const chosen = unseen[Math.floor(Math.random() * unseen.length)];
+      selected.push(available.splice(available.indexOf(chosen), 1)[0]);
+      continue;
+    }
+
     const weights = available.map((item) => {
       const level = activeProfile.progress[getKey(item)]?.level || 0;
       return Math.max(1, 6 - level);
