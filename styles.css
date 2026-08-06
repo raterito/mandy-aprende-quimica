@@ -52,13 +52,15 @@ h1, h2, h3, p { margin-top: 0; }
 .stats span { padding: 7px 10px; border-radius: 999px; background: #ffffff0d; color: var(--accent-2); font-weight: 800; }
 .progress { height: 7px; margin: 14px 0; overflow: hidden; border-radius: 999px; background: #ffffff12; }
 .progress div { width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transition: width .3s; }
-.level-card { display: grid; grid-template-columns: minmax(220px, 1fr) minmax(160px, .7fr); column-gap: 16px; align-items: center; margin: 4px 0 14px; padding: 10px 13px; border: 1px solid #6ee7ff26; border-radius: 12px; background: #6ee7ff09; }
+.level-row { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; align-items: stretch; margin: 4px 0 14px; }
+.level-card { display: grid; grid-template-columns: minmax(220px, 1fr) minmax(160px, .7fr); column-gap: 16px; align-items: center; margin: 0; padding: 8px 13px; border: 1px solid #6ee7ff26; border-radius: 12px; background: #6ee7ff09; }
 .level-card > div:first-child { display: flex; justify-content: space-between; gap: 12px; grid-column: 1 / -1; margin-bottom: 7px; }
 .level-card span, .level-card small { color: var(--muted); font-size: .78rem; }
 .level-progress { height: 7px; overflow: hidden; border-radius: 999px; background: #ffffff12; }
 .level-progress div { width: 0; height: 100%; background: linear-gradient(90deg, #33d17a, var(--accent-2)); transition: width .3s; }
 .level-card small { text-align: right; }
-.controls { display: flex; gap: 10px; margin-bottom: 22px; }
+.controls { display: flex; gap: 8px; margin: 0; }
+.controls button { padding: 6px 11px; }
 .secondary, .text-button { background: #ffffff12; color: var(--text); }
 .text-button { padding: 7px 10px; color: var(--accent-2); }
 .text-button[hidden] { display: none; }
@@ -119,6 +121,10 @@ h1, h2, h3, p { margin-top: 0; }
     padding: 17px 2px 5px;
   }
   .element-card .name { font-size: .62rem; }
+}
+@media (max-width: 820px) {
+  .level-row { grid-template-columns: 1fr; }
+  .controls { justify-content: flex-start; }
 }
 @media (max-width: 620px) {
   .app-shell { padding: 8px 10px 14px; } .hero { padding: 11px 14px; } .hero-badge { display: none; }

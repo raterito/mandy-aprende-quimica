@@ -21,6 +21,7 @@ Los cambios importantes del proyecto se registran en este archivo.
 - El control «Mostrar/Ocultar información» aparece solamente después de comenzar una partida.
 - La presentación ahora refleja la progresión completa hasta los 118 elementos.
 - El rango de cada nivel se presenta entre comillas como nombre del módulo.
+- Los controles de partida ocupan menos altura y se ubican a la izquierda del módulo actual.
 
 ### Añadido
 

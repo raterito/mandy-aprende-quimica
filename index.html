@@ -67,18 +67,19 @@
 
           <div class="progress" aria-hidden="true"><div id="progressBar"></div></div>
 
-          <section class="level-card" aria-label="Progreso de niveles">
-            <div>
-              <strong id="levelLabel">Nivel 1 de 6 · «Elementos 1–20»</strong>
-              <span id="unlockLabel">5 niveles por desbloquear</span>
+          <div class="level-row">
+            <div class="controls">
+              <button id="startGameBtn">🚀 Empezar partida</button>
+              <button id="restartGameBtn" class="secondary">↻ Reiniciar</button>
             </div>
-            <div class="level-progress"><div id="levelProgressBar"></div></div>
-            <small id="levelProgressText">Dominio del bloque: 0% · Se desbloquea al 80%</small>
-          </section>
-
-          <div class="controls">
-            <button id="startGameBtn">🚀 Empezar partida</button>
-            <button id="restartGameBtn" class="secondary">↻ Reiniciar</button>
+            <section class="level-card" aria-label="Progreso de niveles">
+              <div>
+                <strong id="levelLabel">Nivel 1 de 6 · «Elementos 1–20»</strong>
+                <span id="unlockLabel">5 niveles por desbloquear</span>
+              </div>
+              <div class="level-progress"><div id="levelProgressBar"></div></div>
+              <small id="levelProgressText">Dominio del bloque: 0% · Se desbloquea al 80%</small>
+            </section>
           </div>
 
           <div class="board-heading">
