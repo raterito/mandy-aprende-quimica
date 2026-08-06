@@ -59,8 +59,8 @@ h1, h2, h3, p { margin-top: 0; }
 .level-progress { height: 7px; overflow: hidden; border-radius: 999px; background: #ffffff12; }
 .level-progress div { width: 0; height: 100%; background: linear-gradient(90deg, #33d17a, var(--accent-2)); transition: width .3s; }
 .level-card small { text-align: right; }
-.controls { display: flex; gap: 8px; margin: 0; }
-.controls button { padding: 6px 11px; }
+.controls { display: flex; align-items: center; gap: 8px; margin: 0; }
+.controls button { padding: 3px 10px; }
 .secondary, .text-button { background: #ffffff12; color: var(--text); }
 .text-button { padding: 7px 10px; color: var(--accent-2); }
 .text-button[hidden] { display: none; }
