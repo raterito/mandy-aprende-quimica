@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Juego educativo para aprender los elementos químicos." />
+    <title>Química en Juego</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">🧪 Laboratorio interactivo</p>
+          <h1>Química en Juego</h1>
+          <p class="subtitle">Explora, practica y domina los primeros 20 elementos.</p>
+        </div>
+        <div class="hero-badge" aria-hidden="true">⚛️</div>
+      </header>
+
+      <main class="main-grid">
+        <div id="profileShortcut" class="profile-shortcut" hidden>
+          <button id="toggleProfileBtn" class="profile-toggle" aria-expanded="false">👤 Perfil</button>
+        </div>
+        <aside class="panel profile-panel">
+          <div class="profile-heading">
+            <div>
+              <p class="eyebrow">Jugadores</p>
+              <h2>¿Quién va a jugar?</h2>
+            </div>
+            <button id="closeProfileBtn" class="text-button" hidden>Cerrar</button>
+          </div>
+          <form id="profileForm" class="profile-form">
+            <label class="sr-only" for="profileName">Nombre del perfil</label>
+            <input id="profileName" type="text" maxlength="20" placeholder="Tu nombre" autocomplete="off" required />
+            <button type="submit">Nuevo jugador</button>
+          </form>
+          <div id="profileList" class="profile-list"></div>
+        </aside>
+
+        <section class="panel game-panel">
+          <div class="game-header">
+            <div>
+              <p class="eyebrow">Perfil activo</p>
+              <h2 id="activeProfileLabel">Sin perfil</h2>
+            </div>
+            <div class="stats" aria-label="Estadísticas de la partida">
+              <span id="scoreLabel">⭐ 0</span>
+              <span id="streakLabel">🔥 0</span>
+              <span id="masteryLabel">🧠 0%</span>
+              <span id="roundLabel">0/8</span>
+            </div>
+          </div>
+
+          <div class="progress" aria-hidden="true"><div id="progressBar"></div></div>
+
+          <div class="controls">
+            <button id="startGameBtn">🚀 Empezar partida</button>
+            <button id="restartGameBtn" class="secondary">↻ Reiniciar</button>
+          </div>
+
+          <div class="board-heading">
+            <div>
+              <p class="eyebrow">Modo exploración</p>
+              <h3>Primeros 20 elementos</h3>
+            </div>
+            <button id="toggleBoardBtn" class="text-button" aria-expanded="true">Ocultar tabla</button>
+          </div>
+          <div class="periodic-scroll">
+            <div class="periodic-board" id="periodicBoard"></div>
+          </div>
+          <div id="legend" class="legend" aria-label="Familias químicas"></div>
+
+          <div class="question-card" id="questionCard">
+            <p class="eyebrow">Desafío</p>
+            <h3 id="questionText">Elige un perfil y empieza a jugar.</h3>
+            <div id="optionsContainer" class="options"></div>
+          </div>
+
+          <div id="feedback" class="feedback" aria-live="polite"></div>
+          <section id="summaryCard" class="summary-card" hidden></section>
+        </section>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

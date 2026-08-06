@@ -1,0 +1,15 @@
+# Archivos del sistema y editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Dependencias y salidas futuras
+node_modules/
+dist/
+coverage/
+
+# Variables y secretos locales
+.env
+.env.*
+!.env.example
