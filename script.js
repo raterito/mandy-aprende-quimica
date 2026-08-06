@@ -496,7 +496,7 @@ function createElementQuestion(element, index) {
 }
 
 function showNextQuestion() {
-  if (round >= ROUND_COUNT) return finishGame();
+  if (round >= questions.length) return finishGame();
   $("questionCard").hidden = false;
   answerLocked = false;
   closeGuideCard();
@@ -504,6 +504,7 @@ function showNextQuestion() {
   document.querySelectorAll(".guide-button").forEach((button) => button.classList.remove("active"));
   currentQuestion = questions[round];
   currentQuestion.helpUsed = !periodicBoard.closest(".periodic-scroll").classList.contains("is-hidden");
+  $("questionTypeLabel").textContent = currentQuestion.isRetry ? "Repaso" : "Desafío";
   if (currentQuestion.kind === "concept") {
     questionText.textContent = currentQuestion.prompt;
     optionsContainer.replaceChildren();
@@ -554,21 +555,27 @@ function answerQuestion(choice, selectedButton) {
   if (currentQuestion.helpUsed) helpedAnswers += 1;
 
   if (correct) {
-    streak += 1;
-    bestStreak = Math.max(bestStreak, streak);
-    correctCount += 1;
-    const bonus = Math.min(streak - 1, 4) * 2;
-    const fullPoints = 10 + bonus;
-    const earnedPoints = currentQuestion.helpUsed ? Math.ceil(fullPoints / 2) : fullPoints;
-    score += earnedPoints;
+    let earnedPoints = 0;
+    if (!currentQuestion.isRetry) {
+      streak += 1;
+      bestStreak = Math.max(bestStreak, streak);
+      correctCount += 1;
+      const bonus = Math.min(streak - 1, 4) * 2;
+      const fullPoints = 10 + bonus;
+      earnedPoints = currentQuestion.helpUsed ? Math.ceil(fullPoints / 2) : fullPoints;
+      score += earnedPoints;
+    }
     const explanation = isConcept ? currentQuestion.explanation : currentQuestion.element.fact;
-    feedback.textContent = `¡Correcto! +${earnedPoints}${currentQuestion.helpUsed ? " con ayuda" : ""} · ${explanation}`;
+    feedback.textContent = currentQuestion.isRetry
+      ? `¡Repaso completado! · ${explanation}`
+      : `¡Correcto! +${earnedPoints}${currentQuestion.helpUsed ? " con ayuda" : ""} · ${explanation}`;
   } else {
     selectedButton.classList.add("wrong");
     selectedButton.textContent = `✕ ${selectedButton.textContent}`;
     streak = 0;
     const reviewName = isConcept ? currentQuestion.prompt : `${currentQuestion.element.name} (${currentQuestion.element.symbol})`;
-    mistakes.push(reviewName);
+    if (!mistakes.includes(reviewName)) mistakes.push(reviewName);
+    questions.push({ ...currentQuestion, isRetry: true, helpUsed: false });
     feedback.textContent = `La respuesta era “${expected}”. ${isConcept ? currentQuestion.explanation : ""}`;
   }
   updateMastery(currentQuestion.key, correct, currentQuestion.helpUsed);
@@ -591,7 +598,7 @@ function finishGame() {
   renderProfiles();
   questionText.textContent = "¡Partida terminada!";
   optionsContainer.replaceChildren();
-  feedback.textContent = `${activeProfile.name}, conseguiste ${correctCount} de ${ROUND_COUNT} respuestas.`;
+  feedback.textContent = `${activeProfile.name}, acertaste ${correctCount} de ${ROUND_COUNT} preguntas en el primer intento y completaste todos los repasos.`;
   summaryCard.replaceChildren();
   const title = document.createElement("h3");
   title.textContent = score >= 80 ? "🏆 ¡Dominio elemental!" : score >= 50 ? "⚗️ ¡Buen experimento!" : "🔬 Sigue investigando";
@@ -619,8 +626,9 @@ function updateStats() {
   const mastery = activeProfile ? getMasteryPercent(activeProfile) : 0;
   $("masteryLabel").textContent = `🧠 ${mastery}%`;
   $("masteryLabel").setAttribute("aria-label", `Dominio general: ${mastery} por ciento`);
-  $("roundLabel").textContent = `${Math.min(round, ROUND_COUNT)}/${ROUND_COUNT}`;
-  $("progressBar").style.width = `${round / ROUND_COUNT * 100}%`;
+  const sessionTotal = questions.length || ROUND_COUNT;
+  $("roundLabel").textContent = `${Math.min(round, sessionTotal)}/${sessionTotal}`;
+  $("progressBar").style.width = `${round / sessionTotal * 100}%`;
   updateLevelDisplay();
 }
 

@@ -93,6 +93,7 @@ h1, h2, h3, p { margin-top: 0; }
 .question-card[hidden] { display: none; }
 .question-card h3 { line-height: 1.4; }
 .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+.question-progress { margin: 16px 0 0; }
 .option-btn { min-height: 48px; text-align: left; background: #ffffff12; color: var(--text); }
 .option-btn.correct { background: var(--correct); } .option-btn.wrong { background: var(--wrong); }
 .feedback { min-height: 46px; padding-top: 12px; font-weight: 650; line-height: 1.45; }
