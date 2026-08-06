@@ -591,7 +591,7 @@ function answerQuestion(choice, selectedButton) {
     streak = 0;
     const reviewName = isConcept ? currentQuestion.prompt : `${currentQuestion.element.name} (${currentQuestion.element.symbol})`;
     if (!mistakes.includes(reviewName)) mistakes.push(reviewName);
-    questions.push({ ...currentQuestion, isRetry: true, helpUsed: false });
+    scheduleRetry(currentQuestion);
     feedback.textContent = `La respuesta era “${expected}”. ${isConcept ? currentQuestion.explanation : ""}`;
   }
   updateMastery(currentQuestion.key, correct, currentQuestion.helpUsed);
@@ -603,6 +603,23 @@ function answerQuestion(choice, selectedButton) {
   updateStats();
   const readingTime = correct ? 1400 : 3200;
   nextQuestionTimer = setTimeout(showNextQuestion, readingTime);
+}
+
+function scheduleRetry(question) {
+  const minimumGap = 2;
+  const remainingQuestions = questions.length - (round + 1);
+  const fillersNeeded = Math.max(0, minimumGap - remainingQuestions);
+  if (fillersNeeded) {
+    const fillerCandidates = [...new Map(
+      questions
+        .filter((candidate) => candidate.key !== question.key)
+        .map((candidate) => [candidate.key, candidate])
+    ).values()];
+    shuffle(fillerCandidates).slice(0, fillersNeeded).forEach((candidate) => {
+      questions.push({ ...candidate, isRetry: true, helpUsed: false });
+    });
+  }
+  questions.push({ ...question, isRetry: true, helpUsed: false });
 }
 
 function finishGame() {
