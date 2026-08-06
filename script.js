@@ -418,8 +418,15 @@ function toggleBoard() {
 function setBoardVisibility(visible) {
   periodicBoard.closest(".periodic-scroll").classList.toggle("is-hidden", !visible);
   $("legend").classList.toggle("is-hidden", !visible);
+  $("conceptGuide").classList.toggle("is-hidden", !visible);
+  document.querySelector(".board-heading > div").classList.toggle("is-hidden", !visible);
+  document.querySelector(".board-heading").classList.toggle("is-collapsed", !visible);
+  if (!visible) {
+    closeGuideCard();
+    closeElementInfo();
+  }
   const helpNotice = gameActive && !visible ? " (ayuda: 50 % de puntos)" : "";
-  $("toggleBoardBtn").textContent = visible ? "Ocultar tabla" : `Mostrar tabla${helpNotice}`;
+  $("toggleBoardBtn").textContent = visible ? "Ocultar información" : `Mostrar información${helpNotice}`;
   $("toggleBoardBtn").setAttribute("aria-expanded", String(visible));
 }
 
@@ -435,6 +442,7 @@ function resetGame() {
   gameActive = false;
   helpedAnswers = 0;
   setBoardVisibility(true);
+  $("toggleBoardBtn").hidden = true;
   optionsContainer.replaceChildren();
   questionText.textContent = "";
   $("questionCard").hidden = true;
@@ -457,6 +465,7 @@ function startGame() {
   summaryCard.hidden = true;
   questions = buildAdaptiveQuestions();
   gameActive = true;
+  $("toggleBoardBtn").hidden = false;
   closeGuideCard();
   closeElementInfo();
   document.querySelectorAll(".guide-button").forEach((button) => button.classList.remove("active"));

@@ -15,7 +15,11 @@ Los cambios importantes del proyecto se registran en este archivo.
 - Las respuestas incorrectas permanecen visibles más tiempo para poder leer la solución.
 - Cada elemento abre una ficha emergente con todos los datos utilizados por el juego.
 - En la tabla compacta, símbolo y nombre dejan más espacio al número atómico.
+- Se aumentó nuevamente la separación para evitar cruces con números atómicos de tres cifras.
 - La guía de conceptos básicos utiliza las mismas ventanas emergentes que las fichas de elementos.
+- Ocultar la tabla oculta también el encabezado de exploración, las instrucciones y la guía conceptual.
+- El control «Mostrar/Ocultar información» aparece solamente después de comenzar una partida.
+- La presentación ahora refleja la progresión completa hasta los 118 elementos.
 
 ### Añadido
 
