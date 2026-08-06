@@ -144,7 +144,6 @@ let mistakes = [];
 let gameActive = false;
 let helpedAnswers = 0;
 let progressSteps = 0;
-let reviewBank = [];
 
 renderProfiles();
 renderPeriodicTable();
@@ -444,7 +443,6 @@ function resetGame() {
   gameActive = false;
   helpedAnswers = 0;
   progressSteps = 0;
-  reviewBank = [];
   setBoardVisibility(true);
   $("toggleBoardBtn").hidden = true;
   optionsContainer.replaceChildren();
@@ -466,7 +464,6 @@ function startGame() {
   score = round = streak = bestStreak = correctCount = 0;
   helpedAnswers = 0;
   progressSteps = 0;
-  reviewBank = [];
   mistakes = [];
   summaryCard.hidden = true;
   questions = buildAdaptiveQuestions();
@@ -504,7 +501,14 @@ function createElementQuestion(element, index) {
 function showNextQuestion() {
   if (round >= questions.length) {
     if (progressSteps >= ROUND_COUNT) return finishGame();
-    const source = reviewBank.length ? reviewBank[Math.floor(Math.random() * reviewBank.length)] : questions[Math.floor(Math.random() * questions.length)];
+    const uniqueCandidates = [...new Map(
+      questions
+        .filter((question) => question.key !== currentQuestion?.key)
+        .map((question) => [question.key, question])
+    ).values()];
+    const source = uniqueCandidates.length
+      ? uniqueCandidates[Math.floor(Math.random() * uniqueCandidates.length)]
+      : questions[Math.floor(Math.random() * questions.length)];
     questions.push({ ...source, isRetry: true, helpUsed: false });
   }
   $("questionCard").hidden = false;
@@ -587,9 +591,6 @@ function answerQuestion(choice, selectedButton) {
     streak = 0;
     const reviewName = isConcept ? currentQuestion.prompt : `${currentQuestion.element.name} (${currentQuestion.element.symbol})`;
     if (!mistakes.includes(reviewName)) mistakes.push(reviewName);
-    if (!reviewBank.some((question) => question.key === currentQuestion.key)) {
-      reviewBank.push({ ...currentQuestion, isRetry: true, helpUsed: false });
-    }
     questions.push({ ...currentQuestion, isRetry: true, helpUsed: false });
     feedback.textContent = `La respuesta era “${expected}”. ${isConcept ? currentQuestion.explanation : ""}`;
   }

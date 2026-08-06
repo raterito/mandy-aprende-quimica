@@ -33,6 +33,7 @@ Los cambios importantes del proyecto se registran en este archivo.
 - Las preguntas falladas vuelven al final de la sesión hasta ser respondidas correctamente.
 - La barra de progreso se muestra al pie de la pregunta y refleja los repasos añadidos.
 - La barra usa ocho pasos fijos de 12,5%: suma uno por acierto, resta uno por error y exige recuperar el 100% mediante repasos.
+- Los repasos adicionales evitan repetir inmediatamente la misma pregunta recién superada.
 
 ### Pendiente
 
