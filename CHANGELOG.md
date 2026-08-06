@@ -20,6 +20,7 @@ Los cambios importantes del proyecto se registran en este archivo.
 - Ocultar la tabla oculta también el encabezado de exploración, las instrucciones y la guía conceptual.
 - El control «Mostrar/Ocultar información» aparece solamente después de comenzar una partida.
 - La presentación ahora refleja la progresión completa hasta los 118 elementos.
+- El rango de cada nivel se presenta entre comillas como nombre del módulo.
 
 ### Añadido
 

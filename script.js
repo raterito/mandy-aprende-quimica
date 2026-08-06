@@ -667,7 +667,7 @@ function updateLevelDisplay() {
   const block = LEVELS[level - 1];
   const mastery = activeProfile ? getBlockMastery(activeProfile) : 0;
   const remaining = LEVELS.length - level;
-  $("levelLabel").textContent = `Nivel ${level} de ${LEVELS.length} · Elementos ${block.min}–${block.max}`;
+  $("levelLabel").textContent = `Nivel ${level} de ${LEVELS.length} · «Elementos ${block.min}–${block.max}»`;
   $("unlockLabel").textContent = remaining
     ? `${remaining} nivel${remaining === 1 ? "" : "es"} por desbloquear`
     : "Todos los niveles desbloqueados";
