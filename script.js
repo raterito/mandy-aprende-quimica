@@ -143,6 +143,8 @@ let nextQuestionTimer = null;
 let mistakes = [];
 let gameActive = false;
 let helpedAnswers = 0;
+let progressSteps = 0;
+let reviewBank = [];
 
 renderProfiles();
 renderPeriodicTable();
@@ -441,6 +443,8 @@ function resetGame() {
   answerLocked = false;
   gameActive = false;
   helpedAnswers = 0;
+  progressSteps = 0;
+  reviewBank = [];
   setBoardVisibility(true);
   $("toggleBoardBtn").hidden = true;
   optionsContainer.replaceChildren();
@@ -461,6 +465,8 @@ function startGame() {
   clearTimeout(nextQuestionTimer);
   score = round = streak = bestStreak = correctCount = 0;
   helpedAnswers = 0;
+  progressSteps = 0;
+  reviewBank = [];
   mistakes = [];
   summaryCard.hidden = true;
   questions = buildAdaptiveQuestions();
@@ -496,7 +502,11 @@ function createElementQuestion(element, index) {
 }
 
 function showNextQuestion() {
-  if (round >= questions.length) return finishGame();
+  if (round >= questions.length) {
+    if (progressSteps >= ROUND_COUNT) return finishGame();
+    const source = reviewBank.length ? reviewBank[Math.floor(Math.random() * reviewBank.length)] : questions[Math.floor(Math.random() * questions.length)];
+    questions.push({ ...source, isRetry: true, helpUsed: false });
+  }
   $("questionCard").hidden = false;
   answerLocked = false;
   closeGuideCard();
@@ -510,7 +520,7 @@ function showNextQuestion() {
     optionsContainer.replaceChildren();
     shuffle(currentQuestion.options).forEach((option) => addOptionButton(option));
     feedback.textContent = "Elige una respuesta.";
-    updateStats(true);
+    updateStats();
     return;
   }
   const { element, type } = currentQuestion;
@@ -526,7 +536,7 @@ function showNextQuestion() {
   optionsContainer.replaceChildren();
   choices.forEach((choice) => addOptionButton(type === "name-to-symbol" ? choice.symbol : choice.name, choice));
   feedback.textContent = "Elige una respuesta.";
-  updateStats(true);
+  updateStats();
 }
 
 function addOptionButton(label, value = label) {
@@ -555,6 +565,7 @@ function answerQuestion(choice, selectedButton) {
   if (currentQuestion.helpUsed) helpedAnswers += 1;
 
   if (correct) {
+    progressSteps = Math.min(ROUND_COUNT, progressSteps + 1);
     let earnedPoints = 0;
     if (!currentQuestion.isRetry) {
       streak += 1;
@@ -570,11 +581,15 @@ function answerQuestion(choice, selectedButton) {
       ? `¡Repaso completado! · ${explanation}`
       : `¡Correcto! +${earnedPoints}${currentQuestion.helpUsed ? " con ayuda" : ""} · ${explanation}`;
   } else {
+    progressSteps = Math.max(0, progressSteps - 1);
     selectedButton.classList.add("wrong");
     selectedButton.textContent = `✕ ${selectedButton.textContent}`;
     streak = 0;
     const reviewName = isConcept ? currentQuestion.prompt : `${currentQuestion.element.name} (${currentQuestion.element.symbol})`;
     if (!mistakes.includes(reviewName)) mistakes.push(reviewName);
+    if (!reviewBank.some((question) => question.key === currentQuestion.key)) {
+      reviewBank.push({ ...currentQuestion, isRetry: true, helpUsed: false });
+    }
     questions.push({ ...currentQuestion, isRetry: true, helpUsed: false });
     feedback.textContent = `La respuesta era “${expected}”. ${isConcept ? currentQuestion.explanation : ""}`;
   }
@@ -620,16 +635,14 @@ function finishGame() {
   updateStats();
 }
 
-function updateStats(questionShown = false) {
+function updateStats() {
   $("scoreLabel").textContent = `⭐ ${score}`;
   $("streakLabel").textContent = `🔥 ${streak}`;
   const mastery = activeProfile ? getMasteryPercent(activeProfile) : 0;
   $("masteryLabel").textContent = `🧠 ${mastery}%`;
   $("masteryLabel").setAttribute("aria-label", `Dominio general: ${mastery} por ciento`);
-  const sessionTotal = questions.length || ROUND_COUNT;
-  const visibleProgress = questionShown && gameActive ? Math.min(round + 1, sessionTotal) : Math.min(round, sessionTotal);
-  $("roundLabel").textContent = `${visibleProgress}/${sessionTotal}`;
-  $("progressBar").style.width = `${visibleProgress / sessionTotal * 100}%`;
+  $("roundLabel").textContent = `${progressSteps}/${ROUND_COUNT}`;
+  $("progressBar").style.width = `${progressSteps / ROUND_COUNT * 100}%`;
   updateLevelDisplay();
 }
 
