@@ -23,6 +23,7 @@ Los cambios importantes del proyecto se registran en este archivo.
 - El rango de cada nivel se presenta entre comillas como nombre del módulo.
 - Los controles de partida ocupan menos altura y se ubican a la izquierda del módulo actual.
 - Se evitó que los botones de partida se estiren a la altura del panel y se redujo su padding vertical.
+- Se versionaron los recursos CSS y JavaScript para evitar que los dispositivos conserven diseños antiguos en caché.
 
 ### Añadido
 
