@@ -2,6 +2,11 @@
 
 Juego educativo en español para aprender conceptos fundamentales de química y avanzar gradualmente por los 118 elementos de la tabla periódica.
 
+## Experiencias disponibles
+
+- `index.html`: juego clásico con perfiles, currículo progresivo y aprendizaje adaptativo.
+- `laboratorio/index.html`: **Mandy: Laboratorio Cerebral**, colección de minijuegos químicos rápidos.
+
 ## Cómo jugar
 
 No requiere instalación ni dependencias. Abre `index.html` en un navegador moderno.
@@ -39,6 +44,7 @@ Claves utilizadas:
 - `index.html`: estructura de la interfaz.
 - `styles.css`: diseño, tabla periódica y adaptación responsive.
 - `script.js`: datos químicos, perfiles, preguntas y aprendizaje adaptativo.
+- `laboratorio/`: experiencia de minijuegos Mandy: Laboratorio Cerebral.
 - `AGENTS.md`: contexto técnico para futuras sesiones de desarrollo.
 - `CHANGELOG.md`: historial de cambios.
 

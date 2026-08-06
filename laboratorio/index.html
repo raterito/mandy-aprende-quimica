@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#5638b8" />
+    <title>Mandy: Laboratorio Cerebral</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero">
+        <div class="mascot" aria-hidden="true">👩🏻‍🔬</div>
+        <div>
+          <p class="eyebrow">Entrenamiento químico</p>
+          <h1>Mandy: Laboratorio <span>Cerebral</span></h1>
+          <p>Pruebas químicas rápidas para entrenar memoria, observación y velocidad.</p>
+        </div>
+      </header>
+
+      <main>
+        <section id="menuScreen" class="screen">
+          <nav class="module-path" aria-label="Módulos del laboratorio">
+            <div class="module-path-heading">
+              <div>
+                <p class="eyebrow">Tu ruta de aprendizaje</p>
+                <h2>Salas del laboratorio</h2>
+              </div>
+              <span class="module-progress">1 de 6</span>
+            </div>
+            <div class="module-buttons">
+              <button class="module-button active" aria-current="page">
+                <span>⚗️</span><strong>Elementos</strong><small>Disponible</small>
+              </button>
+              <button class="module-button" disabled title="Domina Elementos para desbloquear esta sala">
+                <span>🔒</span><strong>El átomo</strong><small>Bloqueado</small>
+              </button>
+              <button class="module-button" disabled title="Completa El átomo para desbloquear esta sala">
+                <span>🔒</span><strong>Enlaces</strong><small>Bloqueado</small>
+              </button>
+              <button class="module-button" disabled title="Completa Enlaces para desbloquear esta sala">
+                <span>🔒</span><strong>Reacciones</strong><small>Bloqueado</small>
+              </button>
+              <button class="module-button" disabled title="Completa Reacciones para desbloquear esta sala">
+                <span>🔒</span><strong>Cantidades</strong><small>Bloqueado</small>
+              </button>
+              <button class="module-button" disabled title="Completa Cantidades para desbloquear esta sala">
+                <span>🔒</span><strong>Avanzada</strong><small>Bloqueado</small>
+              </button>
+            </div>
+            <p class="unlock-hint">🏁 Entrena en Elementos para abrir la siguiente sala: <strong>El átomo</strong>.</p>
+          </nav>
+
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Elige un entrenamiento</p>
+              <h2>¿Qué quieres ejercitar?</h2>
+            </div>
+            <div class="best-pill">🏆 Récord: <strong id="bestScore">0</strong></div>
+          </div>
+          <div id="modeGrid" class="mode-grid"></div>
+          <button id="mixBtn" class="mix-button">🧠 Desafío mixto</button>
+          <p class="menu-note">Cada prueba dura 30 segundos. La dificultad aumenta con tu racha.</p>
+        </section>
+
+        <section id="countdownScreen" class="screen centered" hidden>
+          <p id="countdownMode" class="eyebrow"></p>
+          <div id="countdownNumber" class="countdown">3</div>
+          <p>¡Prepárate!</p>
+        </section>
+
+        <section id="gameScreen" class="screen" hidden>
+          <div class="game-topbar">
+            <button id="exitBtn" class="quiet-button" aria-label="Salir de la partida">← Salir</button>
+            <div id="modeBadge" class="mode-badge"></div>
+            <div class="timer" aria-label="Tiempo restante">⏱️ <strong id="timeLabel">30</strong></div>
+          </div>
+          <div class="time-track"><div id="timeBar" class="time-bar"></div></div>
+          <div class="score-row">
+            <span>⭐ <strong id="scoreLabel">0</strong></span>
+            <span>🔥 Racha <strong id="streakLabel">0</strong></span>
+          </div>
+          <article id="challengeCard" class="challenge-card">
+            <p id="instruction" class="instruction"></p>
+            <h2 id="prompt" class="prompt"></h2>
+            <div id="challengeArea"></div>
+            <p id="feedback" class="feedback" aria-live="polite"></p>
+          </article>
+        </section>
+
+        <section id="resultScreen" class="screen centered" hidden>
+          <div id="resultMedal" class="result-medal">🧪</div>
+          <p class="eyebrow">Entrenamiento completado</p>
+          <h2 id="resultTitle">¡Buen experimento!</h2>
+          <div class="result-score"><strong id="finalScore">0</strong><span>puntos</span></div>
+          <div class="result-stats">
+            <span><strong id="correctStat">0</strong>Aciertos</span>
+            <span><strong id="accuracyStat">0%</strong>Precisión</span>
+            <span><strong id="bestStreakStat">0</strong>Mejor racha</span>
+          </div>
+          <p id="resultMessage"></p>
+          <div class="result-actions">
+            <button id="retryBtn" class="primary-button">Jugar otra vez</button>
+            <button id="menuBtn" class="quiet-button">Elegir otra prueba</button>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

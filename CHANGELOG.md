@@ -27,6 +27,7 @@ Los cambios importantes del proyecto se registran en este archivo.
 
 ### Añadido
 
+- «Mandy: Laboratorio Cerebral», experiencia paralela con cuatro minijuegos, desafío mixto y ruta visual de módulos.
 - Efectos de sonido breves y simpáticos para distinguir respuestas correctas e incorrectas.
 - Cobertura garantizada de contenidos: antes del sorteo adaptativo se priorizan temas y elementos nunca preguntados.
 - Seis niveles progresivos que desbloquean gradualmente los 118 elementos al alcanzar 80% de dominio por bloque.
