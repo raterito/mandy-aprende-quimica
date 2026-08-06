@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Juego educativo para aprender los elementos químicos." />
-    <title>Química en Juego</title>
+    <title>Mandy aprende Química</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -12,10 +12,23 @@
       <header class="hero">
         <div>
           <p class="eyebrow">🧪 Laboratorio interactivo</p>
-          <h1>Química en Juego</h1>
+          <h1>Mandy aprende Química</h1>
           <p class="subtitle">Explora, practica y domina los primeros 20 elementos.</p>
         </div>
-        <div class="hero-badge" aria-hidden="true">⚛️</div>
+        <div class="hero-badge" aria-hidden="true">
+          <svg viewBox="0 0 96 96" role="img">
+            <circle class="avatar-bg" cx="48" cy="48" r="45" />
+            <path class="avatar-hair" d="M24 47c0-23 11-35 25-35 17 0 26 13 24 36l-3 27H25z" />
+            <circle class="avatar-ear" cx="24" cy="49" r="6" />
+            <circle class="avatar-ear" cx="72" cy="49" r="6" />
+            <ellipse class="avatar-face" cx="48" cy="47" rx="22" ry="27" />
+            <path class="avatar-hair" d="M26 39c3-20 13-27 24-27 13 0 22 9 23 27-12-2-20-8-25-15-4 8-11 13-22 15z" />
+            <circle class="avatar-eye" cx="39" cy="48" r="2.5" />
+            <circle class="avatar-eye" cx="57" cy="48" r="2.5" />
+            <path class="avatar-smile" d="M40 59c5 5 11 5 16 0" />
+            <path class="avatar-shirt" d="M20 91c2-17 12-25 28-25s26 8 28 25z" />
+          </svg>
+        </div>
       </header>
 
       <main class="main-grid">
@@ -47,12 +60,21 @@
             <div class="stats" aria-label="Estadísticas de la partida">
               <span id="scoreLabel">⭐ 0</span>
               <span id="streakLabel">🔥 0</span>
-              <span id="masteryLabel">🧠 0%</span>
+              <span id="masteryLabel" title="Dominio general: progreso en conceptos y elementos" aria-label="Dominio general: 0 por ciento">🧠 0%</span>
               <span id="roundLabel">0/8</span>
             </div>
           </div>
 
           <div class="progress" aria-hidden="true"><div id="progressBar"></div></div>
+
+          <section class="level-card" aria-label="Progreso de niveles">
+            <div>
+              <strong id="levelLabel">Nivel 1 de 6 · Elementos 1–20</strong>
+              <span id="unlockLabel">5 niveles por desbloquear</span>
+            </div>
+            <div class="level-progress"><div id="levelProgressBar"></div></div>
+            <small id="levelProgressText">Dominio del bloque: 0% · Se desbloquea al 80%</small>
+          </section>
 
           <div class="controls">
             <button id="startGameBtn">🚀 Empezar partida</button>
@@ -62,18 +84,22 @@
           <div class="board-heading">
             <div>
               <p class="eyebrow">Modo exploración</p>
-              <h3>Primeros 20 elementos</h3>
+              <h3 id="periodicTitle">Elementos 1–20</h3>
+              <p class="muted board-hint">Pulsa un elemento para abrir su ficha.</p>
             </div>
             <button id="toggleBoardBtn" class="text-button" aria-expanded="true">Ocultar tabla</button>
           </div>
+          <nav id="conceptGuide" class="concept-guide" aria-label="Guía de conceptos básicos"></nav>
+          <dialog id="guideCard" class="element-dialog guide-dialog" aria-live="polite"></dialog>
           <div class="periodic-scroll">
             <div class="periodic-board" id="periodicBoard"></div>
           </div>
+          <dialog id="elementInfoCard" class="element-dialog" aria-live="polite"></dialog>
           <div id="legend" class="legend" aria-label="Familias químicas"></div>
 
-          <div class="question-card" id="questionCard">
+          <div class="question-card" id="questionCard" hidden>
             <p class="eyebrow">Desafío</p>
-            <h3 id="questionText">Elige un perfil y empieza a jugar.</h3>
+            <h3 id="questionText"></h3>
             <div id="optionsContainer" class="options"></div>
           </div>
 

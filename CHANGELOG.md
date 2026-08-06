@@ -4,6 +4,25 @@ Los cambios importantes del proyecto se registran en este archivo.
 
 ## [Sin publicar]
 
+### Cambiado
+
+- El juego ahora se llama «Mandy aprende Química» y utiliza un icono vectorial de una niña con pelo negro.
+- Cabecera y gestión de perfiles más compactas para que el juego aparezca antes en pantalla.
+- La tabla se oculta al comenzar; consultarla durante una pregunta reduce a la mitad los puntos de ese acierto.
+- Se añadió una guía consultable con toda la información conceptual utilizada en las preguntas básicas.
+- La tarjeta de desafío permanece oculta hasta comenzar una partida, eliminando instrucciones redundantes.
+- El indicador de dominio incluye una explicación emergente y una etiqueta accesible.
+- Las respuestas incorrectas permanecen visibles más tiempo para poder leer la solución.
+- Cada elemento abre una ficha emergente con todos los datos utilizados por el juego.
+- En la tabla compacta, símbolo y nombre dejan más espacio al número atómico.
+- La guía de conceptos básicos utiliza las mismas ventanas emergentes que las fichas de elementos.
+
+### Añadido
+
+- Seis niveles progresivos que desbloquean gradualmente los 118 elementos al alcanzar 80% de dominio por bloque.
+- Panel visible con nivel actual, avance del bloque y cantidad de niveles pendientes.
+- Repaso adaptativo de elementos pertenecientes a niveles anteriores.
+
 ### Pendiente
 
 - Aplicación web instalable y funcionamiento sin conexión.

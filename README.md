@@ -1,6 +1,6 @@
-# Química en Juego
+# Mandy aprende Química
 
-Juego educativo en español para aprender conceptos fundamentales de química y los primeros 20 elementos de la tabla periódica.
+Juego educativo en español para aprender conceptos fundamentales de química y avanzar gradualmente por los 118 elementos de la tabla periódica.
 
 ## Cómo jugar
 
@@ -15,7 +15,9 @@ El último jugador queda activo al volver a abrir la página. La gestión de jug
 ## Funciones actuales
 
 - Seis preguntas introductorias sobre tabla periódica, número atómico, símbolos, grupos, períodos y familias.
-- Preguntas de nombre, símbolo, número atómico y datos de los primeros 20 elementos.
+- Preguntas de nombre, símbolo, número atómico y datos de los 118 elementos.
+- Seis niveles: 1–20, 21–40, 41–60, 61–80, 81–100 y 101–118.
+- Desbloqueo del siguiente nivel al alcanzar 80% de dominio en el bloque actual.
 - Selección adaptativa: aparecen más los contenidos nuevos o fallados y menos los dominados.
 - Dominio individual de 0 a 5 por concepto y elemento.
 - Perfiles locales, puntuación, rachas, progreso y resumen de errores.
@@ -51,7 +53,7 @@ node --check script.js
 1. Convertir el sitio en una PWA instalable y utilizable sin conexión.
 2. Publicarlo mediante GitHub Pages.
 3. Incorporar pruebas automatizadas para el motor adaptativo.
-4. Ampliar gradualmente los elementos sin sobrecargar a principiantes.
+4. Enriquecer las fichas de los elementos avanzados con más usos y curiosidades.
 
 ## Privacidad
 

@@ -6,7 +6,7 @@ Construir un juego de química simple, amable y educativo para niños y familiar
 
 ## Estado actual
 
-La aplicación está implementada únicamente con HTML, CSS y JavaScript. Incluye perfiles locales, primeros 20 elementos, conceptos fundamentales, partidas de ocho rondas y selección adaptativa de preguntas.
+La aplicación está implementada únicamente con HTML, CSS y JavaScript. Incluye perfiles locales, los 118 elementos organizados en seis niveles, conceptos fundamentales, partidas de ocho rondas y selección adaptativa de preguntas.
 
 ## Decisiones de producto
 
@@ -16,6 +16,8 @@ La aplicación está implementada únicamente con HTML, CSS y JavaScript. Incluy
 - La primera partida prioriza fundamentos: seis preguntas conceptuales y dos de elementos.
 - La segunda y tercera partida usan cuatro preguntas conceptuales; después se mantienen dos como repaso.
 - El dominio se almacena por `concept:<id>` y `element:<número>`.
+- Los niveles cubren 1–20, 21–40, 41–60, 61–80, 81–100 y 101–118; se desbloquean con 80% de dominio en el bloque actual.
+- Las preguntas de elementos priorizan el bloque vigente y reservan una fracción para repasar niveles anteriores.
 - Un acierto suma un nivel; un error resta dos. El rango es 0–5.
 - La selección ponderada da peso 6 a contenido nuevo y peso 1 a contenido dominado. Lo dominado no desaparece por completo.
 - Los datos permanecen en `localStorage`; todavía no existe sincronización entre dispositivos.
@@ -37,7 +39,7 @@ La aplicación está implementada únicamente con HTML, CSS y JavaScript. Incluy
 - Publicar con GitHub Pages y documentar la URL.
 - Añadir pruebas unitarias del cálculo de dominio y la selección ponderada.
 - Evaluar una pantalla de progreso detallado por tema.
-- Ampliar la tabla por etapas, desbloqueando nuevos elementos según dominio.
+- Enriquecer los datos educativos específicos de los elementos 21–118.
 
 ## Verificación manual mínima
 
